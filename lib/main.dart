@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'HomeScren/Home.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,10 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Text(
-        'Flutter Demo Home Page',
-        style: TextStyle(fontSize: 16),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: Home(),
     );
   }
 }
