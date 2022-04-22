@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whats_work/class/userClass.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -8,7 +9,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  @override
+  List<Users> users = [
+    Users(name: "Anas Khamis", location: "Amman"),
+    Users(name: "Taha Khamis", location: "Iraq"),
+    Users(name: "Mhmd Khamis", location: "Jo"),
+  ];
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -34,9 +39,10 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: ListView(
-        children: [
-          SafeArea(
+      body: ListView.builder(
+        itemCount: users.length,
+        itemBuilder: (context, index) {
+          return SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -50,63 +56,42 @@ class _HomeState extends State<Home> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Anas Khamis"),
-                        Text("Amman"),
+                        Text(users[index].name),
+                        Text(users[index].location),
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Anas Khamis"),
-                        Text("Amman"),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Anas Khamis"),
-                        Text("Amman"),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          )
-        ],
+          );
+        },
       ),
     );
   }
 }
+// children: [
+// SafeArea(
+// child: Padding(
+// padding: const EdgeInsets.all(8.0),
+// child: Row(
+// children: [
+// CircleAvatar(
+// backgroundImage: NetworkImage(
+// 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+// ),
+// Padding(
+// padding: const EdgeInsets.all(12),
+// child: Column(
+// crossAxisAlignment: CrossAxisAlignment.start,
+// children: [
+// Text("Anas Khamis"),
+// Text("Amman"),
+// ],
+// ),
+// ),
+// ],
+// ),
+// ),
+// ),
+// ],
